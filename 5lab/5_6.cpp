@@ -1,21 +1,21 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <locale.h> 
 #include <string.h>
 
-#define MAX_LINE_LENGTH 1024 // Ìàêñèìàëüíàÿ äëèíà ñòðîêè
+#define MAX_LINE_LENGTH 1024 // ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ Ð´Ð»Ð¸Ð½Ð° ÑÑ‚Ñ€Ð¾ÐºÐ¸
 
 void encrypt_file(const char* input_file, const char* output_file, const char* key) {
     FILE* infile = NULL;
     errno_t err = fopen_s(&infile, input_file, "rb");
     if (err != 0 || infile == NULL) {
-        printf("Íå óäàëîñü îòêðûòü ôàéë %s\n", input_file);
+        printf("ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» %s\n", input_file);
         return;
     }
 
     FILE* outfile = NULL;
     err = fopen_s(&outfile, output_file, "wb");
     if (err != 0 || outfile == NULL) {
-        printf("Íå óäàëîñü ñîçäàòü ôàéë %s\n", output_file);
+        printf("ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» %s\n", output_file);
         fclose(infile);
         return;
     }
@@ -23,14 +23,14 @@ void encrypt_file(const char* input_file, const char* output_file, const char* k
     char buffer[MAX_LINE_LENGTH];
     size_t bytes_read;
 
-    int key_index = 0; // Èíäåêñ òåêóùåãî ñèìâîëà êëþ÷à
+    int key_index = 0; // Ð˜Ð½Ð´ÐµÐºÑ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð° ÐºÐ»ÑŽÑ‡Ð°
 
-    // Øèôðîâàíèå/äåøèôðîâàíèå ôàéëà
+    // Ð¨Ð¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ/Ð´ÐµÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð°
     while ((bytes_read = fread(buffer, 1, sizeof(buffer), infile)) > 0) {
         for (size_t i = 0; i < bytes_read; i++) {
-            // Ïðèìåíÿåì XOR äëÿ øèôðîâàíèÿ/äåøèôðîâàíèÿ
+            // ÐŸÑ€Ð¸Ð¼ÐµÐ½ÑÐµÐ¼ XOR Ð´Ð»Ñ ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ/Ð´ÐµÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
             buffer[i] ^= key[key_index % strlen(key)];
-            key_index++; // Ïåðåõîäèì ê ñëåäóþùåìó ñèìâîëó êëþ÷à
+            key_index++; // ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ ÑÐ¸Ð¼Ð²Ð¾Ð»Ñƒ ÐºÐ»ÑŽÑ‡Ð°
         }
         fwrite(buffer, 1, bytes_read, outfile);
     }
@@ -38,7 +38,7 @@ void encrypt_file(const char* input_file, const char* output_file, const char* k
     fclose(infile);
     fclose(outfile);
 
-    printf("Ïðîöåññ çàâåðøåí. Ðåçóëüòàò ñîõðàíåí â ôàéëå '%s'.\n", output_file);
+    printf("ÐŸÑ€Ð¾Ñ†ÐµÑÑ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½ Ð² Ñ„Ð°Ð¹Ð»Ðµ '%s'.\n", output_file);
 }
 
 int main() {
@@ -48,29 +48,29 @@ int main() {
     char output_filename[MAX_LINE_LENGTH];
     char key[MAX_LINE_LENGTH];
 
-    // Çàïðîñ èìåíè âõîäíîãî ôàéëà
-    printf("Ââåäèòå èìÿ âõîäíîãî ôàéëà: ");
+    // Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð¸Ð¼ÐµÐ½Ð¸ Ð²Ñ…Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°
+    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ð²Ñ…Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°: ");
     scanf_s("%s", input_filename, sizeof(input_filename));
 
-    // Çàïðîñ èìåíè âûõîäíîãî ôàéëà
-    printf("Ââåäèòå èìÿ âûõîäíîãî ôàéëà: ");
+    // Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð¸Ð¼ÐµÐ½Ð¸ Ð²Ñ‹Ñ…Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°
+    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°: ");
     scanf_s("%s", output_filename, sizeof(output_filename));
 
-    // Çàïðîñ êëþ÷à øèôðîâàíèÿ
-    printf("Ââåäèòå êëþ÷ øèôðîâàíèÿ: ");
+    // Ð—Ð°Ð¿Ñ€Ð¾Ñ ÐºÐ»ÑŽÑ‡Ð° ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
+    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ»ÑŽÑ‡ ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ: ");
     scanf_s("%s", key, sizeof(key));
 
-    // Øàã 1: Çàøèôðîâàòü èñõîäíûé ôàéë
+    // Ð¨Ð°Ð³ 1: Ð—Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»
     encrypt_file(input_filename, output_filename, key);
 
-    // Øàã 2: Çàøèôðîâàòü çàøèôðîâàííûé ôàéë åùå ðàç
+    // Ð¨Ð°Ð³ 2: Ð—Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð·Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» ÐµÑ‰Ðµ Ñ€Ð°Ð·
     char temp_output[MAX_LINE_LENGTH];
     snprintf(temp_output, sizeof(temp_output), "%s_temp.txt", output_filename);
 
     encrypt_file(output_filename, temp_output, key);
 
-    // Ïðîâåðêà: Åñëè äâîéíîå øèôðîâàíèå âåðíóëî èñõîäíûé òåêñò, òî ïðîãðàììà ðàáîòàåò ïðàâèëüíî
-    printf("Äâîéíîå øèôðîâàíèå âûïîëíåíî. Ðåçóëüòàò ñîõðàíåí â ôàéëå '%s'.\n", temp_output);
+    // ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ°: Ð•ÑÐ»Ð¸ Ð´Ð²Ð¾Ð¹Ð½Ð¾Ðµ ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð²ÐµÑ€Ð½ÑƒÐ»Ð¾ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ‚ÐµÐºÑÑ‚, Ñ‚Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾
+    printf("Ð”Ð²Ð¾Ð¹Ð½Ð¾Ðµ ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¾. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½ Ð² Ñ„Ð°Ð¹Ð»Ðµ '%s'.\n", temp_output);
 
     return 0;
 }

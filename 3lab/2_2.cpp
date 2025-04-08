@@ -1,62 +1,62 @@
-//#include <iostream>
-//#include <cstdlib> // Для rand()
-//#include <ctime>   // Для time()
-//
-//using namespace std;
-//
-//// Функция для вывода массива
-//void printArray(int arr[], int size) {
-//    cout << "[";
-//    for (int i = 0; i < size; i++) {
-//        cout << arr[i];
-//        if (i < size - 1) cout << ", ";
-//    }
-//    cout << "]" << endl;
-//}
-//
-//// Быстрая сортировка (QuickSort)
-//void quickSort(int arr[], int left, int right) {
-//    if (left >= right) return; // Базовый случай: массив из одного элемента
-//
-//    int pivot = arr[(left + right) / 2]; // Выбираем опорный элемент (середина)
-//    int i = left, j = right;
-//
-//    while (i <= j) {
-//        while (arr[i] < pivot) i++; // Ищем элемент слева, который больше или равен опорному
-//        while (arr[j] > pivot) j--; // Ищем элемент справа, который меньше или равен опорному
-//        if (i <= j) {
-//            swap(arr[i], arr[j]); // Меняем элементы местами
-//            i++;
-//            j--;
-//        }
-//    }
-//
-//    // Рекурсивно сортируем левую и правую части
-//    quickSort(arr, left, j);
-//    quickSort(arr, i, right);
-//}
-//
-//int main() {
-//    system("chcp 1251");
-//    const int size = 10;
-//    int arr[size];
-//    // Испралвяю кодировку для корректного вывода
-//    setlocale(LC_ALL, "Russian_Russia.1251");
-//
-//    // Заполнение массива случайными числами
-//    srand(time(0)); // Инициализация генератора случайных чисел
-//    for (int i = 0; i < size; i++) {
-//        arr[i] = rand() % 100; // Случайные числа от 0 до 99
-//    }
-//
-//    // Исходный массив
-//    cout << "Исходный массив:" << endl;
-//    printArray(arr, size);
-//
-//    // Быстрая сортировка
-//    quickSort(arr, 0, size - 1);
-//    cout << "\nМассив после быстрой сортировки:" << endl;
-//    printArray(arr, size);
-//
-//    return 0;
-//}
+п»ї#include <iostream>
+#include <cstdlib> // Р”Р»СЏ rand()
+#include <ctime>   // Р”Р»СЏ time()
+
+using namespace std;
+
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РјР°СЃСЃРёРІР°
+void printArray(int arr[], int size) {
+    cout << "[";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i];
+        if (i < size - 1) cout << ", ";
+    }
+    cout << "]" << endl;
+}
+
+// Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР° (QuickSort)
+void quickSort(int arr[], int left, int right) {
+    if (left >= right) return; // Р‘Р°Р·РѕРІС‹Р№ СЃР»СѓС‡Р°Р№: РјР°СЃСЃРёРІ РёР· РѕРґРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
+
+    int pivot = arr[(left + right) / 2]; // Р’С‹Р±РёСЂР°РµРј РѕРїРѕСЂРЅС‹Р№ СЌР»РµРјРµРЅС‚ (СЃРµСЂРµРґРёРЅР°)
+    int i = left, j = right;
+
+    while (i <= j) {
+        while (arr[i] < pivot) i++; // РС‰РµРј СЌР»РµРјРµРЅС‚ СЃР»РµРІР°, РєРѕС‚РѕСЂС‹Р№ Р±РѕР»СЊС€Рµ РёР»Рё СЂР°РІРµРЅ РѕРїРѕСЂРЅРѕРјСѓ
+        while (arr[j] > pivot) j--; // РС‰РµРј СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІР°, РєРѕС‚РѕСЂС‹Р№ РјРµРЅСЊС€Рµ РёР»Рё СЂР°РІРµРЅ РѕРїРѕСЂРЅРѕРјСѓ
+        if (i <= j) {
+            swap(arr[i], arr[j]); // РњРµРЅСЏРµРј СЌР»РµРјРµРЅС‚С‹ РјРµСЃС‚Р°РјРё
+            i++;
+            j--;
+        }
+    }
+
+    // Р РµРєСѓСЂСЃРёРІРЅРѕ СЃРѕСЂС‚РёСЂСѓРµРј Р»РµРІСѓСЋ Рё РїСЂР°РІСѓСЋ С‡Р°СЃС‚Рё
+    quickSort(arr, left, j);
+    quickSort(arr, i, right);
+}
+
+int main() {
+    system("chcp 1251");
+    const int size = 10;
+    int arr[size];
+    // РСЃРїСЂР°Р»РІСЏСЋ РєРѕРґРёСЂРѕРІРєСѓ РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ РІС‹РІРѕРґР°
+    setlocale(LC_ALL, "Russian_Russia.1251");
+
+    // Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+    srand(time(0)); // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіРµРЅРµСЂР°С‚РѕСЂР° СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 100; // РЎР»СѓС‡Р°Р№РЅС‹Рµ С‡РёСЃР»Р° РѕС‚ 0 РґРѕ 99
+    }
+
+    // РСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ
+    cout << "РСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ:" << endl;
+    printArray(arr, size);
+
+    // Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
+    quickSort(arr, 0, size - 1);
+    cout << "\nРњР°СЃСЃРёРІ РїРѕСЃР»Рµ Р±С‹СЃС‚СЂРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё:" << endl;
+    printArray(arr, size);
+
+    return 0;
+}

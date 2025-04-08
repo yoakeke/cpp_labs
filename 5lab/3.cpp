@@ -1,52 +1,52 @@
-////#include <stdio.h>
-//#include <locale> 
-//#include <string.h>
-//
-//int main(void)
-//{
-//    // Исправляем кодировку для корректного вывода
-//    setlocale(LC_ALL, "Russian_Russia.1251");
-//
-//    char filename[50];
-//    char search_str[50];
-//    char line[1024]; // Буфер для чтения строк
-//
-//    printf("Введите имя файла для поиска: ");
-//    scanf_s("%s", filename, sizeof(filename));
-//
-//    printf("Введите строку для поиска: ");
-//    scanf_s("%s", search_str, sizeof(search_str));
-//
-//    FILE* file = NULL;
-//    errno_t err = fopen_s(&file, filename, "r");
-//    if (err != 0 || file == NULL)
-//    {
-//        printf("Ошибка: Файл '%s' не найден.\n", filename);
-//        return 1;
-//    }
-//
-//    FILE* output_file = NULL;
-//    err = fopen_s(&output_file, "results.txt", "w"); // Безопасная версия fopen
-//    if (err != 0 || output_file == NULL)
-//    {
-//        printf("Ошибка: Не удалось создать файл 'results.txt'.\n");
-//        fclose(file);
-//        return 1;
-//    }
-//
-//    // Поиск строки в файле
-//    while (fgets(line, sizeof(line), file) != NULL)
-//    {
-//        if (strstr(line, search_str) != NULL) // Если строка найдена
-//        {
-//            fputs(line, output_file); // Записываем строку в результирующий файл
-//        }
-//    }
-//
-//    fclose(file);
-//    fclose(output_file);
-//
-//    printf("Результаты поиска сохранены в файле 'results.txt'.\n");
-//
-//    return 0;
-//}
+п»ї//#include <stdio.h>
+#include <locale> 
+#include <string.h>
+
+int main(void)
+{
+    // РСЃРїСЂР°РІР»СЏРµРј РєРѕРґРёСЂРѕРІРєСѓ РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ РІС‹РІРѕРґР°
+    setlocale(LC_ALL, "Russian_Russia.1251");
+
+    char filename[50];
+    char search_str[50];
+    char line[1024]; // Р‘СѓС„РµСЂ РґР»СЏ С‡С‚РµРЅРёСЏ СЃС‚СЂРѕРє
+
+    printf("Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ РїРѕРёСЃРєР°: ");
+    scanf_s("%s", filename, sizeof(filename));
+
+    printf("Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РґР»СЏ РїРѕРёСЃРєР°: ");
+    scanf_s("%s", search_str, sizeof(search_str));
+
+    FILE* file = NULL;
+    errno_t err = fopen_s(&file, filename, "r");
+    if (err != 0 || file == NULL)
+    {
+        printf("РћС€РёР±РєР°: Р¤Р°Р№Р» '%s' РЅРµ РЅР°Р№РґРµРЅ.\n", filename);
+        return 1;
+    }
+
+    FILE* output_file = NULL;
+    err = fopen_s(&output_file, "results.txt", "w"); // Р‘РµР·РѕРїР°СЃРЅР°СЏ РІРµСЂСЃРёСЏ fopen
+    if (err != 0 || output_file == NULL)
+    {
+        printf("РћС€РёР±РєР°: РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р» 'results.txt'.\n");
+        fclose(file);
+        return 1;
+    }
+
+    // РџРѕРёСЃРє СЃС‚СЂРѕРєРё РІ С„Р°Р№Р»Рµ
+    while (fgets(line, sizeof(line), file) != NULL)
+    {
+        if (strstr(line, search_str) != NULL) // Р•СЃР»Рё СЃС‚СЂРѕРєР° РЅР°Р№РґРµРЅР°
+        {
+            fputs(line, output_file); // Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ С„Р°Р№Р»
+        }
+    }
+
+    fclose(file);
+    fclose(output_file);
+
+    printf("Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР° СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р»Рµ 'results.txt'.\n");
+
+    return 0;
+}
