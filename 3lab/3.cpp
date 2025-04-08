@@ -53,6 +53,7 @@
 //}
 //
 //int main() {
+//    system("chcp 1251");
 //    // »спралв€ю кодировку дл€ корректного вывода
 //     setlocale(LC_ALL, "Russian_Russia.1251");
 //

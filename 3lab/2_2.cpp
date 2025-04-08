@@ -37,6 +37,7 @@
 //}
 //
 //int main() {
+//    system("chcp 1251");
 //    const int size = 10;
 //    int arr[size];
 //    // »спралв€ю кодировку дл€ корректного вывода

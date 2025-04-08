@@ -32,7 +32,7 @@ void descendingSortInterval(int arr[], int N1, int N2) {
 int main() {
     // »спралв€ю кодировку дл€ корректного вывода
     setlocale(LC_ALL, "Russian_Russia.1251"); 
-
+    system("chcp 1251");
 
     const int size = 10;
     int arr[size];
