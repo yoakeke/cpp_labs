@@ -1,0 +1,8 @@
+The First Keylogger in History  
+1
+    One of the first keyloggers in the world appeared during the Cold War. Soviet spies were monitoring American diplomats using a bug hidden inside IBM Selectric typewriters. These devices were embedded in 16 typewriters used from 1976 to 1984 at the U.S. embassies in Moscow and Leningrad. 
+
+    According to Ars Technica, the bugs went undetected for eight years, and the Americans only learned about them thanks to a report from one of the U.S.’s allies, whose intelligence services discovered similar surveillance at one of their own embassies. 
+    On October 12, 2015, this story was recounted by Bruce Schneier, a member of the board of directors of the International Association for Cryptologic Research. 
+     
+3
